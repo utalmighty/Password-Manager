@@ -28,7 +28,7 @@
 					<td>
 						<a href="${pageContext.request.contextPath}/updatePassword?id=${password.id}">Update</a>
 						<a>|</a>
-						<a href="${pageContext.request.contextPath}/deletePassword?id=${password.id}">Delete</a>
+						<a href="${pageContext.request.contextPath}/deletePassword?id=${password.id}" onclick="if(!(confirm('Delete?'))) return false;">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
