@@ -12,7 +12,7 @@
 <body>
 	<div id="header"></div>
 	<div id="form">
-		<form:form action="${pageContext.request.contextPath}/${redirect}ProcessPassword" modelAttribute="Password">
+		<form:form action="${pageContext.request.contextPath}/processPassword" modelAttribute="Password">
 			
 			<form:hidden path="id"/>
 			

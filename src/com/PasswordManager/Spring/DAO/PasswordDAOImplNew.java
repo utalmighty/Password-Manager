@@ -17,9 +17,9 @@ public class PasswordDAOImplNew implements PasswordDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public void addPassword(Password password) {
+	public void savePassword(Password password) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(password);
+		session.saveOrUpdate(password);
 	}
 
 	@Override
@@ -27,20 +27,6 @@ public class PasswordDAOImplNew implements PasswordDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Password password = session.get(Password.class, id);
 		session.delete(password);
-	}
-
-	@Override
-	public void updatePassword(Password tempPassword) {
-		Session session = sessionFactory.getCurrentSession();
-		
-		Password password = session.get(Password.class, tempPassword.getId());
-		
-		password.setIdentifiedBy(tempPassword.getIdentifiedBy());
-		password.setUsername(tempPassword.getUsername());
-		password.setUrlPattern(tempPassword.getUrlPattern());
-		password.setPassword(tempPassword.getPassword());
-		
-		return;
 	}
 
 	@Override
@@ -54,7 +40,7 @@ public class PasswordDAOImplNew implements PasswordDAO {
 		List<Password> passwords = query.getResultList();
 		return passwords;
 	}
-
+	
 	@Override
 	public Password getPasswordById(int id) {
 		Session session = sessionFactory.getCurrentSession();

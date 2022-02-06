@@ -31,17 +31,10 @@ public class HomeController {
 	public String addPasswords(Model model) {
 		model.addAttribute("title", "Add Password");
 		model.addAttribute("Password", new Password());
-		model.addAttribute("redirect", "added");
 		return "password-form";
 	}
 	
-	@PostMapping("/addedProcessPassword") // because this request is doing post request sending 
-	// password object form browser to server using request body(not as url parameter).
-	public String process(@ModelAttribute("Password") Password password) {
-		// TODO: Add validation
-		databaseService.addPassword(password);
-		return "redirect:/home"; // This will redirect to home page
-	}
+	
 	
 	@GetMapping("/updatePassword")
 	public String updatePassword(@RequestParam(name="id") int id, Model model) {
@@ -53,16 +46,15 @@ public class HomeController {
 		}
 		model.addAttribute("Password", password);
 		model.addAttribute("title", "Update Password");
-		model.addAttribute("redirect", "updated");
 		return "password-form";
 	}
 	
-	@PostMapping("/updatedProcessPassword")
-	public String processUpdate(@ModelAttribute("Password") Password password) {
+	@PostMapping("/processPassword") // because this request is doing post request sending 
+	// password object form browser to server using request body(not as url parameter).
+	public String process(@ModelAttribute("Password") Password password) {
 		// TODO: Add validation
-		System.out.println(password);
-		databaseService.updatePassword(password);
-		return "redirect:/home";
+		databaseService.savePassword(password);
+		return "redirect:/home"; // This will redirect to home page
 	}
 	
 	@GetMapping("/deletePassword")

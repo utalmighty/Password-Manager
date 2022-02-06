@@ -14,7 +14,7 @@ public class PasswordDAOImpl implements PasswordDAO {
 	static String hibernateConfigFile = "hibernate.cfg.xml";
 	
 	@Override
-	public void addPassword(Password password) {
+	public void savePassword(Password password) {
 		SessionFactory factory = new Configuration().configure(hibernateConfigFile).
 				addAnnotatedClass(Password.class).
 				buildSessionFactory();
@@ -22,7 +22,7 @@ public class PasswordDAOImpl implements PasswordDAO {
 		try {
 			session.beginTransaction();
 		
-			session.save(password);
+			session.saveOrUpdate(password);
 			
 			session.getTransaction().commit();
 		}
@@ -50,11 +50,6 @@ public class PasswordDAOImpl implements PasswordDAO {
 			session.close();
 			factory.close();
 		}
-	}
-
-	@Override
-	public void updatePassword(Password tempPassword) {
-		// TODO : Still to implement.
 	}
 
 	@Override

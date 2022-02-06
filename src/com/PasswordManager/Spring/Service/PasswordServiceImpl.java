@@ -18,21 +18,14 @@ public class PasswordServiceImpl implements PasswordServiceInterface{
 	
 	@Override
 	@Transactional
-	public void addPassword(Password password) {
-		passwordDao.addPassword(password);
+	public void savePassword(Password password) {
+		passwordDao.savePassword(password);
 	}
 
 	@Override
 	@Transactional
 	public void deletePassword(int id) {
 		passwordDao.deletePassword(id);
-		
-	}
-
-	@Override
-	@Transactional
-	public void updatePassword(Password tempPassword) {
-		passwordDao.updatePassword(tempPassword);
 		
 	}
 
