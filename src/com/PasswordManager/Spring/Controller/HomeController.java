@@ -60,7 +60,7 @@ public class HomeController {
 	@GetMapping("/deletePassword")
 		public String deletePassword(@RequestParam(name="id") int id, Model model) {
 			databaseService.deletePassword(id);
-			return "processed";
+			return "redirect:/home";
 	}
 	
 	@GetMapping("/passwords")
