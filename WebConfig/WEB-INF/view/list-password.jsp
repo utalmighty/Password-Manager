@@ -34,5 +34,6 @@
 			</c:forEach>
 		</table>
 	</div>
+	<a href="${pageContext.request.contextPath}/home">Home</a>
 </body>
 </html>

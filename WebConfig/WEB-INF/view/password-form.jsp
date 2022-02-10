@@ -34,6 +34,7 @@
 			
 			<input type="submit" value = "Submit">
 		</form:form>
+		<a href="${pageContext.request.contextPath}/${backButton}">Back To List</a>
 	</div>
 </body>
 </html>

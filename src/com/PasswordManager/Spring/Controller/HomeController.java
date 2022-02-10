@@ -31,10 +31,10 @@ public class HomeController {
 	public String addPasswords(Model model) {
 		model.addAttribute("title", "Add Password");
 		model.addAttribute("Password", new Password());
+		String backButtonUrl = "home";
+		model.addAttribute("backButton", backButtonUrl);
 		return "password-form";
 	}
-	
-	
 	
 	@GetMapping("/updatePassword")
 	public String updatePassword(@RequestParam(name="id") int id, Model model) {
@@ -44,6 +44,8 @@ public class HomeController {
 			model.addAttribute("Message", "Id not found or not valid.");
 			return "error";
 		}
+		String backButtonUrl = "passwords?url="+password.getUrlPattern();
+		model.addAttribute("backButton", backButtonUrl);
 		model.addAttribute("Password", password);
 		model.addAttribute("title", "Update Password");
 		return "password-form";
@@ -58,9 +60,9 @@ public class HomeController {
 	}
 	
 	@GetMapping("/deletePassword")
-		public String deletePassword(@RequestParam(name="id") int id, Model model) {
-			databaseService.deletePassword(id);
-			return "redirect:/home";
+	public String deletePassword(@RequestParam(name="id") int id, Model model) {
+		databaseService.deletePassword(id);
+		return "redirect:/home";
 	}
 	
 	@GetMapping("/passwords")
@@ -69,5 +71,4 @@ public class HomeController {
 		model.addAttribute("passwords", databaseService.getPasswordByUrl(url));
 		return "list-password";
 	}
-	
 }
