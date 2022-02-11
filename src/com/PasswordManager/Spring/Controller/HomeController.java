@@ -41,7 +41,7 @@ public class HomeController {
 		Password password = databaseService.getPasswordById(id);
 		if (password == null) {
 			model.addAttribute("title", "Not found");
-			model.addAttribute("Message", "Id not found or not valid.");
+			model.addAttribute("message", "Id not found or not valid.");
 			return "error";
 		}
 		String backButtonUrl = "passwords?url="+password.getUrlPattern();
