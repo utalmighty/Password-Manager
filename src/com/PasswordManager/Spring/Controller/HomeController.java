@@ -19,6 +19,12 @@ public class HomeController {
 	@Autowired
 	PasswordServiceInterface databaseService;
 	
+	@GetMapping("/status")
+	// Test URL
+	public String test() {
+		return "Test";
+	}
+	
 	@GetMapping("/home")
 	// Display all the URLs/Sites only
 	public String getUrls(Model model) {

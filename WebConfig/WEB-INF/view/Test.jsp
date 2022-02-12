@@ -7,6 +7,6 @@
 <title>Test Page</title>
 </head>
 <body>
-	<p>Success<p>
+	<p>Status: Success<p>
 </body>
 </html>
